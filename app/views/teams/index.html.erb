@@ -1,0 +1,9 @@
+<h1>List of Teams</h1>
+<%= link_to 'Add New Team', teams_new_path %> <br><br>
+
+<% 'ID' 'PLAYER 1' 'PLAYER 2' %> <br>
+<% @teams.each do |team| %>
+<%= team.id %> 
+<%= team.player1 %> 
+<%= team.player2 %> <br>
+<% end %>

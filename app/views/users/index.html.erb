@@ -1,0 +1,11 @@
+<h1>List of All Users</h1>
+
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.id %><br/>
+  <%= user.email %><br/>
+  <%= user.created_at %><br/> <br/>
+<% end %>
+
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>

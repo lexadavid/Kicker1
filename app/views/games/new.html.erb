@@ -1,0 +1,9 @@
+<%= form_for(@game) do |f| %>
+	<%= f.text_field :team1, :placeholder => "PLAYERS (Team 1)" %> <br>
+	<%= f.text_field :team2, :placeholder => 'PLAYERS (Team 2)' %> <br>
+	<%= f.number_field :team1_id, :placeholder => 'ID (Team 1)' %> <br>
+	<%= f.number_field :team2_id, :placeholder => 'ID (Team 2)' %> <br>
+	<%= f.number_field :team1_score, :placeholder => 'SCORE (Team 1)' %> <br>
+	<%= f.number_field :team2_score, :placeholder => 'SCORE (Team 2)' %> <br>
+	<%= f.submit "Save" %>
+<%end%>

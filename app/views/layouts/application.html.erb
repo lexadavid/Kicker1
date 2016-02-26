@@ -1,0 +1,36 @@
+<h1>This is KICKER DASHBOARD for Wunder Team!</h1>
+
+
+<html>
+<head>
+  <title>Kicker</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</header>
+<nav id="horzNav"
+<p>
+<%= link_to 'Players', users_path %>
+<%= link_to 'Teams', teams_index_path %>
+<%= link_to 'Games', games_index_path %>
+<%= link_to 'Best Performers', '#' %>
+<%= link_to 'Rules', pages_rules_path %>
+<% if current_user %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </p> <br>
+<% else %>
+  <%= link_to 'Login', new_user_session_path %>
+  <%= link_to 'Register now', new_user_registration_path %> <br>
+<% end %>
+</p>
+</nav>
+</head>
+
+<body>
+	</header>
+
+
+<%= yield %>
+
+</body>
+</html>

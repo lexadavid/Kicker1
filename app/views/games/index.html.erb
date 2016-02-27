@@ -1,11 +1,12 @@
 <h1>List of Games</h1>
-<%= link_to 'Add New Game', games_new_path %> <br><br>
+<%= link_to("Add New Game", :action => 'new', :class => 'action new')%> <br><br>
 
 <% @games.each do |game| %>
-<%= game.id %> <br>
+<%= game.id %>
 <%= game.team1 %>
-<%= game.team1_score %> <br>
 <%= game.team2 %>
-<%= game.team2_score %> <br>
-<%=link_to "Delete", game, :confirm => "You sure?", :method => :delete %> <br> <br> 
+<%=link_to("Detail", {:action => 'show', :id => game.id}, :class => 'action show') %>
+<%=link_to("Edit", '#', :class => 'action edit') %>
+<%=link_to("Delete", '#', :class => 'action destroy') %> <br>
+
 <% end %>

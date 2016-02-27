@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'teams' => 'teams#create'
 
   get 'games/index' => 'games#index'
+  get 'games/:id' => 'games#show'
   get 'games/new' => 'games#new'
   post '/games' => 'games#create'
   resources :games

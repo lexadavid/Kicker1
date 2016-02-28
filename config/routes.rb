@@ -1,20 +1,11 @@
 Rails.application.routes.draw do
 
-
-  match '/users',   to: 'users#index',   via: 'get'
-  get 'pages/rules' => 'pages#rules'
-  get 'teams/index'
-  get 'teams/new'
-  post 'teams' => 'teams#create'
-
-  get 'games/index' => 'games#index'
-  get 'games/:id' => 'games#show'
-  get 'games/new' => 'games#new'
-  post '/games' => 'games#create'
-  resources :games
-
-  devise_for :users
   root 'pages#welcome'
+  get 'pages/rules' => 'pages#rules'
+  resources :teams
+  resources :games
+  devise_for :users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -14,11 +14,28 @@ class GamesController < ApplicationController
   def create
     @game=Game.new(game_params)
     if @game.save
-    redirect_to :action => :index
+    redirect_to :action => 'index'
     else
     @title = "Game added"
     render 'game/new'
     end
+  end
+
+  def edit
+     @game=Game.find(params[:id])
+  end
+
+  def update
+    @game=Game.find(params[:id])
+    if @game.update_attributes(game_params)
+      redirect_to :action => 'show', :id => @game.id
+    else
+      render 'edit'
+    end
+  end
+
+
+  def update
   end
 
   def destroy

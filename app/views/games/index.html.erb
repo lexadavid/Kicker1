@@ -5,8 +5,8 @@
 <%= game.id %>
 <%= game.team1 %>
 <%= game.team2 %>
-<%=link_to("Detail", {:action => 'show', :id => game.id}, :class => 'action show') %>
-<%=link_to("Edit", {:action => 'edit', :id => game.id}, :class => 'action edit') %>
-<%=link_to("Delete", '#', :class => 'action destroy') %> <br>
+<%=link_to("Detail", {:action => 'Show', :id => game.id}, :class => 'action show') %>
+<%=link_to("Edit", {:action => 'Edit', :id => game.id}, :class => 'action edit') %>
+<%=link_to("Delete", {:action => 'Delete', :id => game.id}, :class => 'action delete') %> <br>
 
 <% end %>

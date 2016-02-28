@@ -34,10 +34,6 @@ class GamesController < ApplicationController
     end
   end
 
-
-  def update
-  end
-
   def destroy
     @game = Game.find(game_params[:game])
     @game.destroy

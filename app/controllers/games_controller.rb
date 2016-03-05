@@ -39,8 +39,8 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    game=Game.find( params[:id]).destroy
-    redirect_to :action => :index, :notice => "Your game was deleted"
+    game=Game.find(params[:id]).destroy
+    redirect_to games_path, :notice => "Your game was deleted"
   end
 
   def game_params

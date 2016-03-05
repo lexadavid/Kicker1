@@ -1,0 +1,8 @@
+<h2> Team Update </h2>
+
+<%= form_for(@team) do |f| %> 
+<%= f.text_field :player1, :placeholder => 'Player 1'%> <br>
+<%= f.text_field :player2, :placeholder => 'Player 2' %> <br>
+	<%= f.submit "Update " %>
+<%end%>
+

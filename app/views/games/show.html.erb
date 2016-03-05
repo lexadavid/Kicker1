@@ -30,6 +30,5 @@
 		<td><%= @game.updated_at %> </td>
 	</tr>
 </table> <br>
-<%=link_to("Edit", '#', :class => 'action edit') %>
-<%=link_to("Delete", '#', :class => 'action destroy') %>
-<%=link_to("Back", {:action => 'index'}, :class => 'action index') %>
+<%=link_to(" Edit", edit_game_path(@game.id), class: 'action edit') %>
+<%=link_to(" Delete", game_path(@game.id), method: :delete, class: 'action delete') %>

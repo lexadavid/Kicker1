@@ -28,15 +28,18 @@ class GamesController < ApplicationController
   def update
     @game=Game.find(params[:id])
     if @game.update_attributes(game_params)
-      redirect_to :action => 'show', :id => @game.id
+      redirect_to game_path @game
     else
       render 'edit'
     end
   end
 
+  def delete
+    @game=Game.find(params[:id])
+  end
+
   def destroy
-    @game = Game.find(game_params[:game])
-    @game.destroy
+    game=Game.find( params[:id]).destroy
     redirect_to :action => :index, :notice => "Your game was deleted"
   end
 

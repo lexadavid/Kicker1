@@ -5,17 +5,20 @@ class TeamsController < ApplicationController
 
   def show
     @team=Team.find(params[:id])
+  end
 
-  def new
-  	@team=Team.new
+   def new
+    @team=Team.new
   end
 
   def create
-  	@team=Team.new(team_params)
-  	if @team.save
-  		redirect_to teams_path
-  	else render team_new_path
-  	end
+    @team=Team.new(team_params)
+    if @team.save
+      flash[:notice] = "Team created successfully."
+    redirect_to teams_path
+    else
+    render 'team/new'
+    end
   end
 
   def edit
@@ -44,5 +47,4 @@ class TeamsController < ApplicationController
   def team_params
   	params.require(:team).permit(:player1, :player2)
   end
-end
 end

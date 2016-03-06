@@ -1,8 +1,6 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<h1>New Team</h1>
 
-<%= form_for(@team) do |f| %> 
-<%= f.text_field :player1, :placeholder => 'Player 1'%> <br>
-<%= f.text_field :player2, :placeholder => 'Player 2' %> <br>
-<%= f.submit 'Create a team'%>
-<% end %>
+<%= form_for Team.new do |f| %>
+<%= render(partial: "form", locals: {f: f}) %>
+<%= f.submit "Create " %>
+<%end%>

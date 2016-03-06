@@ -26,7 +26,7 @@
       <td><%= game.team1 %></td>
       <td><%= game.team2 %></td>
       <td><%= game.team1_score%>:<%=game.team2_score %></td>
-      <td><%= game.updated_at %></td>
+      <td><%= game.updated_at.strftime("%d/%m/%Y") %></td>
       <td><%=link_to("Detail", game_path(game.id), class: 'action show') %></td>
 	  <td><%=link_to("Edit", edit_game_path(game.id), class: 'action edit') %></td>
 	  <td><%=link_to("Delete", game_path(game.id), method: :delete, class: 'action delete') %> <br></td>

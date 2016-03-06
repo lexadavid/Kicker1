@@ -1,13 +1,39 @@
+
+
 <h1>List of Games</h1>
-<%= link_to("Add New Game", :action => 'new', :class => 'action new')%> <br><br>
+<%= link_to("Add New Game", new_game_path, class: 'action new')%> <br><br>
+
+
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th>#</th>
+      <th>Team 1</th>
+      <th>Team 2</th>
+      <th>Score</th>
+      <th>Date</th>
+      <th>Detail</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
 
 <% @games.each do |game| %>
-<%= game.id %>
-<%= game.team1 %>
-<%= game.team2 %>
-<%=link_to("Detail", game_path(game.id), class: 'action show') %>
-<%=link_to("Edit", edit_game_path(game.id), class: 'action edit') %>
-<%=link_to("Delete", game_path(game.id), method: :delete, class: 'action delete') %> <br>
+  
+  <tbody>
+    <tr>
+      <td><%= game.id %> </td>
+      <td><%= game.team1 %></td>
+      <td><%= game.team2 %></td>
+      <td><%= game.team1_score%>:<%=game.team2_score %></td>
+      <td><%= game.updated_at %></td>
+      <td><%=link_to("Detail", game_path(game.id), class: 'action show') %></td>
+	  <td><%=link_to("Edit", edit_game_path(game.id), class: 'action edit') %></td>
+	  <td><%=link_to("Delete", game_path(game.id), method: :delete, class: 'action delete') %> <br></td>
+	  <%end%>
+    </tr>
+  </tbody>
+</table>
 
-<% end %>
+
 

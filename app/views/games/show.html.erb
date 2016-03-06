@@ -1,32 +1,35 @@
-<h1>List of Games</h1>
+
+
+  <h1>Game <%=@game.id%></h1>
 <table summary="Game Detail View">
+
 	<tr>
-		<td>ID: </td>
+		<th>ID: </th>
 		<td><%= @game.id %> </td>
 	</tr>
 
 	<tr>
-		<td>Team1: </td>
+		<th>Team1: </th>
 		<td><%= @game.team1 %> </td>
 	</tr>
 	<tr>
-		<td>Team2: </td>
+		<th>Team2: </th>
 		<td><%= @game.team2 %> </td>
 	</tr>
 	<tr>
-		<td>Team1 - score: </td>
+		<th>Team1 - score: </th>
 		<td><%= @game.team1_score %> </td>
 	</tr>
 	<tr>
-		<td>Team2 - score: </td>
+		<th>Team2 - score: </th>
 		<td><%= @game.team2_score %> </td>
 	</tr>
 	<tr>
-		<td>Created: </td>
+		<th>Created: </th>
 		<td><%= @game.created_at %> </td>
 	</tr>
 	<tr>
-		<td>Updated: </td>
+		<th>Updated: </th>
 		<td><%= @game.updated_at %> </td>
 	</tr>
 </table> <br>

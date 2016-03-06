@@ -1,4 +1,4 @@
-<h1>This is KICKER DASHBOARD for Wunder Team!</h1>
+<h1>WUNDER - Kicker Dashboard</h1>
 
 
 <html>
@@ -25,9 +25,14 @@
 </p>
 </nav>
 </head>
-
 <body>
-	</header>
+</header>
+
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+  <%end%>
 
 <div class="container">
 <%= yield %>

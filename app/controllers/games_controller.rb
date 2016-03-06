@@ -14,7 +14,8 @@ class GamesController < ApplicationController
   def create
     @game=Game.new(game_params)
     if @game.save
-    redirect_to :action => 'index'
+      flash[:notice] = "Game created successfully."
+    redirect_to games_path
     else
     @title = "Game added"
     render 'game/new'
@@ -28,7 +29,8 @@ class GamesController < ApplicationController
   def update
     @game=Game.find(params[:id])
     if @game.update_attributes(game_params)
-      redirect_to game_path @game
+      flash[:notice] = "Game #{@game.id} updated successfully."
+      redirect_to game_path
     else
       render 'edit'
     end
@@ -40,7 +42,9 @@ class GamesController < ApplicationController
 
   def destroy
     game=Game.find(params[:id]).destroy
-    redirect_to games_path, :notice => "Your game was deleted"
+    flash[:notice] = "Game #{game.id} deleted successfully."
+    redirect_to games_path
+
   end
 
   def game_params

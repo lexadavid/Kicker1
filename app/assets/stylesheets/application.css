@@ -17,3 +17,17 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.nav-pills {
+font-size: 25px;
+font-weight: bold;
+
+}
+
+.brand {
+padding-top: 20px;
+font-size: 50px;
+font-weight: bold;
+color: black;
+
+
+}

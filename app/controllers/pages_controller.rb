@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def rules
   end
+
+  def best_performes
+  end
 end

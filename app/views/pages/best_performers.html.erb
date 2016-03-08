@@ -1,0 +1,3 @@
+<%=ActiveRecord::Base.connection.execute(" select distinct player1 from teams;").each do |row| %>
+<%= puts row[0] %>
+<% end %>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#welcome'
   get 'pages/rules' => 'pages#rules'
+  get 'pages/best' => 'pages#best_performers'
   resources :teams
   resources :games
   devise_for :users

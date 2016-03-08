@@ -1,9 +1,8 @@
 
 <h1>List of Teams</h1>
-<%= link_to 'Add New Team', new_team_path %> <br><br>
 
 <table class="table table-striped">
-<thead>
+  <thead>
     <tr>
       <th>#</th>
       <th>Player 1</th>
@@ -14,19 +13,20 @@
     </tr>
   </thead>
 
-<% @teams.each do |team| %>
-  
   <tbody>
-    <tr>
-      <td><%= team.id %> </td>
-      <td><%= team.player1 %></td>
-      <td><%= team.player2 %></td>
-      <td><%= link_to("Detail", team_path(team.id), class: "action show") %></td>
-      <td><%= link_to("Edit", edit_team_path(team.id), class: "action edit") %></td>
-      <td><%= link_to("Delete", team_path(team.id), method: :delete, class: "action delete") %></td>
-      <% end %>
-    </tr>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.id %> </td>
+        <td><%= team.player1 %></td>
+        <td><%= team.player2 %></td>
+        <td><%= link_to("Detail", team_path(team.id), class: "action show") %></td>
+        <td><%= link_to("Edit", edit_team_path(team.id), class: "action edit") %></td>
+        <td><%= link_to("Delete", team_path(team.id), method: :delete, class: "action delete") %></td>
+      </tr>
+    <% end %>
   </tbody>
-</table>
+</table> 
+
+<%= link_to 'Add New Team', new_team_path %>
 
 

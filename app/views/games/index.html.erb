@@ -19,8 +19,8 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.id %> </td>
-        <td><%= game.team1 %></td>
-        <td><%= game.team2 %></td>
+        <td><%= game.team1_player1%> & <%= game.team1_player2%></td>
+        <td><%= game.team2_player1%> & <%= game.team2_player2%></td>
         <td><%= game.team1_score%>:<%=game.team2_score %></td>
         <td><%= game.updated_at.strftime("%d/%m/%Y") %></td>
         <td><%=link_to("Detail", game_path(game.id), class: 'action show') %></td>

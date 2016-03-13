@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/best' => 'pages#best_performers'
   resources :teams
   resources :games
+  resources :players
   devise_for :users
 
 

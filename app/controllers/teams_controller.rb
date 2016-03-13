@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  
   def index
   	@teams=Team.all
   end
@@ -13,11 +14,11 @@ class TeamsController < ApplicationController
 
   def create
     @team=Team.new(team_params)
-    if @team.save
-      flash[:notice] = "Team created successfully."
-    redirect_to teams_path
-    else
-    render 'team/new'
+      if @team.save
+        flash[:notice] = "Team created successfully."
+      redirect_to teams_path
+      else
+      render 'team/new'
     end
   end
 
@@ -27,9 +28,9 @@ class TeamsController < ApplicationController
 
   def update
     @team=Team.find(params[:id])
-    if @team.update_attributes(team_params)
-      redirect_to team_path 
-    else render edit_team_path
+      if @team.update_attributes(team_params)
+        redirect_to team_path 
+      else render edit_team_path
     end
   end
 
@@ -40,11 +41,12 @@ class TeamsController < ApplicationController
 
   def destroy
     team=Team.find(params[:id]).destroy
-    redirect_to teams_path, notice: "Team was #{team.id} destroy"
+    redirect_to teams_path, notice: "Team #{team.id} was deleted."
   end
 
 
   def team_params
   	params.require(:team).permit(:player1, :player2)
   end
+
 end

@@ -1,7 +1,25 @@
-
-<%= f.text_field :team1, :placeholder => "PLAYERS (Team 1)" %> <br>
-	<%= f.text_field :team2, :placeholder => 'PLAYERS (Team 2)' %> <br>
-	<%= f.number_field :team1_id, :placeholder => 'ID (Team 1)' %> <br>
-	<%= f.number_field :team2_id, :placeholder => 'ID (Team 2)' %> <br>
-	<%= f.number_field :team1_score, :placeholder => 'SCORE (Team 1)' %> <br>
-	<%= f.number_field :team2_score, :placeholder => 'SCORE (Team 2)' %> <br>
+<table summary= "Game form for" >	
+	<tr>
+		<th><%= f.label(:team1_player1, "Team1") %> </th>
+		<td><%= f.select(:team1_player1, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+	<tr>
+		<th><%= f.label(:team1_player2, "Team1") %> </th>
+		<td><%= f.select(:team1_player2, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:team2_player1, "Team2") %> </th>
+		<td><%= f.select(:team2_player1, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:team2_player2, "Team2") %> </th>
+		<td><%= f.select(:team2_player2, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:team1_score, "Score Team1") %> </th>
+		<td><%= f.number_field :team1_score, placeholder: 'SCORE (Team 1)' %> <br></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:team2_score, "Score Team 2") %> </th>
+		<td><%= f.number_field :team2_score, placeholder: 'SCORE (Team 2)' %> <br></td>
+	</tr>
+</table>

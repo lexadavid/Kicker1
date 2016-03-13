@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  
   def index
   	@games=Game.all
   end
@@ -9,21 +10,23 @@ class GamesController < ApplicationController
 
   def new
   	@game=Game.new
+    @players=Player.order('first_name DESC')
   end
 
   def create
     @game=Game.new(game_params)
     if @game.save
       flash[:notice] = "Game created successfully."
-    redirect_to games_path
+      redirect_to games_path
     else
-    @title = "Game added"
-    render 'game/new'
+      @players=Player.order('first_name DESC')
+      render 'game/new'
     end
   end
 
   def edit
-     @game=Game.find(params[:id])
+    @game=Game.find(params[:id])
+    @players=Player.order('first_name DESC')
   end
 
   def update
@@ -32,6 +35,7 @@ class GamesController < ApplicationController
       flash[:notice] = "Game #{@game.id} updated successfully."
       redirect_to game_path
     else
+      @players=Player.order('first_name DESC') 
       render 'edit'
     end
   end
@@ -44,11 +48,10 @@ class GamesController < ApplicationController
     game=Game.find(params[:id]).destroy
     flash[:notice] = "Game #{game.id} deleted successfully."
     redirect_to games_path
-
   end
 
   def game_params
-    params.require(:game).permit(:team1, :team2, :team1_id, :team2_id, :team1_score, :team2_score)
+    params.require(:game).permit(:team1_player1, :team1_player2, :team2_player1, :team2_player2, :team1_score, :team2_score)
   end 
 
 end

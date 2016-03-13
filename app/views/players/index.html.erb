@@ -1,0 +1,34 @@
+
+<h1>List of Players</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Position</th>
+      <th>Detail</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.id %> </td>
+        <td><%= player.first_name %></td>
+        <td><%= player.last_name %></td>
+        <td><%= player.position %></td>
+        <td><%= link_to("Detail", player_path(player.id), class: "action show") %></td>
+        <td><%= link_to("Edit", edit_player_path(player.id), class: "action edit") %></td>
+        <td><%= link_to("Delete", player_path(player.id), method: :delete, class: "action delete") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+<%= link_to 'Add New Player', new_player_path %>
+
+

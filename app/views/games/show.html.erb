@@ -9,20 +9,19 @@
 	</tr>
 
 	<tr>
-		<th><%= label(:team1_player1, "Team1 :") %> </th>
-		<td><%= @game.team1_player1 %> </td>
+		<th><%= label(:player1_id, "Team1 :") %> </th>
+		<td><%= @game.player1&.first_name %> </td>
 	</tr>
 	<tr>
-		<th><%= label(:team1_player2, "Team1 :") %> </th>
-		<td><%= @game.team1_player2 %> </td>
+		<th><%= label(:player2_id, "Team1 :") %> </th>
+		<td><%= @game.player2&.first_name %> </td>
 	</tr>
 	<tr>
-		<th><%= label(:team2_player1, "Team2 :") %> </th>
-		<td><%= @game.team2_player1 %> </td>
-	</tr>
+		<th><%= label(:player3_id, "Team2 :") %> </th>
+		<td><%= @game.player3&.first_name %> </td>
 	<tr>
-		<th><%= label(:team2_player1, "Team2 :") %> </th>
-		<td><%= @game.team2_player2 %> </td>
+		<th><%= label(:player4_id, "Team2 :") %> </th>
+		<td><%= @game.player4&.first_name %> </td>
 	</tr>
 	<tr>
 		<th><%= label(:team1_score, "Team1 - score :") %> </th>

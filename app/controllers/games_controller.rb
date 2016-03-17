@@ -23,11 +23,11 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game=Game.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def update
-    @game=Game.find(params[:id])
+    @game = Game.find(params[:id])
     if @game.update_attributes(game_params)
       flash[:notice] = "Game #{@game.id} updated successfully."
       redirect_to game_path
@@ -37,17 +37,17 @@ class GamesController < ApplicationController
   end
 
   def delete
-    @game=Game.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def destroy
-    game=Game.find(params[:id]).destroy
+    game = Game.find(params[:id]).destroy
     flash[:notice] = "Game #{game.id} deleted successfully."
     redirect_to games_path
   end
 
   def game_params
-    params.require(:game).permit(:team1_player1, :team1_player2, :team2_player1, :team2_player2, :team1_score, :team2_score)
+    params.require(:game).permit(:player1_id, :player2_id, :player3_id, :player4_id, :team1_score, :team2_score)
   end 
 
 end

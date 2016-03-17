@@ -19,13 +19,14 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.id %> </td>
-        <td><%= game.player1.id %> &amp; <%= game.player2_id %></td>
-        <td><%= game.player3_id %> &amp; <%= game.player4_id %></td>
-        <td><%= game.team1_score%>:<%=game.team2_score %></td>
+        <!-- (&)safe navigation operator: http://dev.mensfeld.pl/2015/11/ruby-2-3-0-changes-and-features/#safe -->
+        <td><%= game.player1&.first_name %> &amp; <%= game.player2&.first_name %></td> 
+        <td><%= game.player3&.first_name %> &amp; <%= game.player4&.first_name %></td>
+        <td><%= game.team1_score %> : <%= game.team2_score %></td>
         <td><%= game.updated_at.strftime("%d/%m/%Y") %></td>
-        <td><%=link_to("Detail", game_path(game.id), class: 'action show') %></td>
-        <td><%=link_to("Edit", edit_game_path(game.id), class: 'action edit') %></td>
-        <td><%=link_to("Delete", game_path(game.id), method: :delete, class: 'action delete') %> <br></td>
+        <td><%= link_to "Detail", game_path(game), class: 'action show' %></td>
+        <td><%= link_to "Edit", edit_game_path(game), class: 'action edit' %></td>
+        <td><%= link_to "Delete", game_path(game), method: :delete, class: 'action delete' %> <br></td>
       </tr>
 	  <%end%>
   </tbody>

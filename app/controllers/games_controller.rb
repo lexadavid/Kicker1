@@ -1,32 +1,29 @@
 class GamesController < ApplicationController
   
   def index
-  	@games=Game.all
+  	@games = Game.all
   end
 
   def show
-    @game=Game.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def new
-  	@game=Game.new
-    @players=Player.order('first_name DESC')
+  	@game = Game.new
   end
 
   def create
-    @game=Game.new(game_params)
+    @game = Game.new(game_params)
     if @game.save
       flash[:notice] = "Game created successfully."
       redirect_to games_path
     else
-      @players=Player.order('first_name DESC')
       render 'game/new'
     end
   end
 
   def edit
     @game=Game.find(params[:id])
-    @players=Player.order('first_name DESC')
   end
 
   def update
@@ -35,7 +32,6 @@ class GamesController < ApplicationController
       flash[:notice] = "Game #{@game.id} updated successfully."
       redirect_to game_path
     else
-      @players=Player.order('first_name DESC') 
       render 'edit'
     end
   end

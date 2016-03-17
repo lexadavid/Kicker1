@@ -11,18 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312225127) do
+ActiveRecord::Schema.define(version: 20160317180056) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "team2_score"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "team1_score"
-    t.integer  "team1_player1"
-    t.integer  "team1_player2"
-    t.integer  "team2_player1"
-    t.integer  "team2_player2"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "player3_id"
+    t.integer  "player4_id"
   end
+
+  create_table "games_players", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "game_id",   null: false
+  end
+
+  add_index "games_players", ["game_id", "player_id"], name: "index_games_players_on_game_id_and_player_id"
+  add_index "games_players", ["player_id", "game_id"], name: "index_games_players_on_player_id_and_game_id"
 
   create_table "players", force: :cascade do |t|
     t.string   "first_name"

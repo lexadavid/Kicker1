@@ -1,18 +1,18 @@
 <table summary= "Game form for" >	
 	<tr>
-		<th><%= f.label(:team1_player1, "Team1") %> </th>
-		<td><%= f.select(:team1_player1, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+		<th><%= f.label(:player1_id, "Team1") %> </th>
+		<td><%= f.select(:player1_id, players_select) %> <br></td>
 	<tr>
-		<th><%= f.label(:team1_player2, "Team1") %> </th>
-		<td><%= f.select(:team1_player2, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+		<th></th>
+		<td><%= f.select(:player2_id, players_select) %> <br></td>
 	</tr>
 	<tr>
-		<th><%= f.label(:team2_player1, "Team2") %> </th>
-		<td><%= f.select(:team2_player1, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+		<th><%= f.label(:player3_id, "Team2") %> </th>
+		<td><%= f.select(:player3_id, players_select) %> <br></td>
 	</tr>
 	<tr>
-		<th><%= f.label(:team2_player2, "Team2") %> </th>
-		<td><%= f.select(:team2_player2, @players.map {|p| [p.first_name, p.id]}) %> <br></td>
+		<th></th>
+		<td><%= f.select(:player4_id, players_select) %> <br></td>
 	</tr>
 	<tr>
 		<th><%= f.label(:team1_score, "Score Team1") %> </th>

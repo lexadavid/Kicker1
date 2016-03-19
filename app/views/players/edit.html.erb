@@ -1,6 +1,10 @@
+<h1> Player Update </h1>
+<br>
+<br>
+
 <h2> Player <%=@player.id%> </h2>
 
-<%= form_for(@player) do |f| %> 
+<%= form_for(@player) do |f| %>
 <%= render(partial: "form", locals: {f: f}) %>
 	<%= f.submit "Update " %>
 <%end%>

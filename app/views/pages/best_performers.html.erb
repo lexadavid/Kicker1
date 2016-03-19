@@ -1,3 +1,6 @@
+<h1>Best Performers</h1>
+<br>
+<br>
 
 <table class="table table-striped">
   <thead>
@@ -67,13 +70,13 @@ left join (
 group by p.id
 order by win_ratio desc
 
-  ").each_with_index do |row, i| %>
+  ").each_with_index do |performer, i| %>
       <tr>
         <td><%= (i+1) %> </td>
-        <td><%= row[0] %> </td>
-        <td><%= row[1] %></td>
-        <td><%= row[2] %></td>
-        <td><%= row[3] %> <%='%'%></td>
+        <td><%= performer[0] %> </td>
+        <td><%= performer[1] %></td>
+        <td><%= performer[2] %></td>
+        <th><%= performer[3] %> <%='%'%></th>
       </tr>
     <% end %>
   </tbody>

@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
   def edit
   	@player=Player.find(params[:id])
   end
- 
+
   def update
   	@player=Player.find(params[:id])
   	if @player.update_attributes(player_params)
@@ -43,7 +43,7 @@ class PlayersController < ApplicationController
     redirect_to teams_path, notice: "Player #{player.first_name} was deleted."
   end
 
-private 
+private
   def player_params
     params.require(:player).permit(:first_name, :last_name, :email, :country, :position)
   end

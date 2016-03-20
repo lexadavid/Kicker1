@@ -25,18 +25,32 @@ select
   case when p2.wins is not null then p2.wins else 0 end+
   case when p3.wins is not null then p3.wins else 0 end+
   case when p4.wins is not null then p4.wins else 0 end,
-
-  (case when p1.wins is not null then p1.wins else 0 end+
-  case when p2.wins is not null then p2.wins else 0 end+
-  case when p3.wins is not null then p3.wins else 0 end+
-  case when p4.wins is not null then p4.wins else 0 end)*100
-  /
-  nullif(
-    (case when p1.number is not null then p1.number else 0 end+
-    case when p2.number is not null then p2.number else 0 end+
-    case when p3.number is not null then p3.number else 0 end+
-    case when p4.number is not null then p4.number else 0 end)
-  ,0) as win_ratio
+  case when (
+    (case when p1.wins is not null then p1.wins else 0 end+
+    case when p2.wins is not null then p2.wins else 0 end+
+    case when p3.wins is not null then p3.wins else 0 end+
+    case when p4.wins is not null then p4.wins else 0 end)*100
+    /
+    nullif(
+      (case when p1.number is not null then p1.number else 0 end+
+      case when p2.number is not null then p2.number else 0 end+
+      case when p3.number is not null then p3.number else 0 end+
+      case when p4.number is not null then p4.number else 0 end)
+    ,0) > 0 )
+    then
+      (case when p1.wins is not null then p1.wins else 0 end+
+      case when p2.wins is not null then p2.wins else 0 end+
+      case when p3.wins is not null then p3.wins else 0 end+
+      case when p4.wins is not null then p4.wins else 0 end)*100
+      /
+      nullif(
+        (case when p1.number is not null then p1.number else 0 end+
+        case when p2.number is not null then p2.number else 0 end+
+        case when p3.number is not null then p3.number else 0 end+
+        case when p4.number is not null then p4.number else 0 end)
+      ,0)
+    else 0 end
+    as win_ratio
 
 from players as p
 left join (
@@ -68,7 +82,7 @@ left join (
   group by player4_id) as p4 on (p4.id=p.id)
 
 group by p.id, 2,3
-order by win_ratio desc
+order by win_ratio desc, 2 desc
 
   ").each_with_index do |performer, i| %>
       <tr>

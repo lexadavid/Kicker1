@@ -67,7 +67,7 @@ left join (
   from games
   group by player4_id) as p4 on (p4.id=p.id)
 
-group by p.id
+group by p.id, 2,3
 order by win_ratio desc
 
   ").each_with_index do |performer, i| %>

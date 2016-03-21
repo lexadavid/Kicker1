@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def rules
   end
 
-  def best_performes
+  def best_performers
+    @players = Player.all
   end
 end

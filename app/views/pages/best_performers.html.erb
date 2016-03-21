@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>#</th>
       <th>Name</th>
       <th>Games</th>
       <th>Wins</th>
@@ -14,83 +13,12 @@
   </thead>
 
   <tbody>
-    <% ActiveRecord::Base.connection.execute("
-select
-  p.first_name,
-  case when p1.number is not null then p1.number else 0 end+
-  case when p2.number is not null then p2.number else 0 end+
-  case when p3.number is not null then p3.number else 0 end+
-  case when p4.number is not null then p4.number else 0 end,
-  case when p1.wins is not null then p1.wins else 0 end+
-  case when p2.wins is not null then p2.wins else 0 end+
-  case when p3.wins is not null then p3.wins else 0 end+
-  case when p4.wins is not null then p4.wins else 0 end,
-  case when (
-    (case when p1.wins is not null then p1.wins else 0 end+
-    case when p2.wins is not null then p2.wins else 0 end+
-    case when p3.wins is not null then p3.wins else 0 end+
-     case when p4.wins is not null then p4.wins else 0 end)*100
-    /
-    nullif(
-      (case when p1.number is not null then p1.number else 0 end+
-      case when p2.number is not null then p2.number else 0 end+
-      case when p3.number is not null then p3.number else 0 end+
-      case when p4.number is not null then p4.number else 0 end)
-    ,0) > 0 )
-    then
-      (case when p1.wins is not null then p1.wins else 0 end+
-      case when p2.wins is not null then p2.wins else 0 end+
-      case when p3.wins is not null then p3.wins else 0 end+
-      case when p4.wins is not null then p4.wins else 0 end)*100
-      /
-      nullif(
-        (case when p1.number is not null then p1.number else 0 end+
-        case when p2.number is not null then p2.number else 0 end+
-        case when p3.number is not null then p3.number else 0 end+
-        case when p4.number is not null then p4.number else 0 end)
-      ,0)
-    else 0 end
-    as win_ratio
-
-from players as p
-left join (
-  select player1_id as id,
-  sum (case when player1_id is not null then 1 else 0 end) as number,
-  sum (case when team1_score > team2_score then 1 else 0 end) as wins
-  from games
-  group by player1_id) as p1 on (p1.id=p.id)
-
-left join (
-  select player2_id as id,
-  sum (case when player2_id is not null then 1 else 0 end) as number,
-  sum (case when team1_score > team2_score then 1 else 0 end) as wins
-  from games
-  group by player2_id) as p2 on (p2.id=p.id)
-
-left join (
-  select player3_id as id,
-  sum (case when player3_id is not null then 1 else 0 end) as number,
-  sum (case when team1_score < team2_score then 1 else 0 end) as wins
-  from games
-  group by player3_id) as p3 on (p3.id=p.id)
-
-left join (
-  select player4_id as id,
-  sum (case when player4_id is not null then 1 else 0 end) as number,
-  sum (case when team1_score < team2_score then 1 else 0 end) as wins
-  from games
-  group by player4_id) as p4 on (p4.id=p.id)
-
-group by p.id, 2,3
-order by win_ratio desc, 2 desc
-
-  ").each_with_index do |performer, i| %>
+    <% @players.each do |player| %>
       <tr>
-        <td><%= (i+1) %> </td>
-        <td><%= performer[0] %> </td>
-        <td><%= performer[1] %></td>
-        <td><%= performer[2] %></td>
-        <th><%= performer[3] %> <%='%'%></th>
+        <td><%= player.first_name %> </td>
+        <td><%= player.games.count %> </td>
+        <td><%= player.wins.count %></td>
+        <td><%= player.win_ratio %> %</td>
       </tr>
     <% end %>
   </tbody>

@@ -13,6 +13,6 @@ class Player < ActiveRecord::Base
   end
 
   def win_ratio
-    (wins.count / games.count.to_f).round(1) * 100
+    games.count.to_f.zero? ? 0 : ((wins.count / (games.count.to_f)).round(1) * 100)
   end
 end

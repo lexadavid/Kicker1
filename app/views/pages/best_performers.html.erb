@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @players.sort_by {|win| win.win_ratio }.reverse.each_with_index  do |player, index| %>
+    <% @players.sort_by {|ratio| ratio.win_ratio }.reverse.each_with_index  do |player, index| %>
       <tr>
         <td><%= index + 1 %> </td>
         <td><%= player.first_name %> </td>

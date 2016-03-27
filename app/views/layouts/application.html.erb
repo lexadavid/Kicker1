@@ -36,18 +36,6 @@
                   <li>
                       <a class="page-scroll" ><%= link_to 'Rules', pages_rules_path %></a>
                   </li>
-                  <li>
-                    <% if current_user %>
-                      <a class="page-scroll" ><%= link_to 'Logout', destroy_user_session_path, method: :delete %></a>
-                  </li>
-                  <li>
-                    <% else %>
-                      <a class="page-scroll" ><%= link_to 'Login', new_user_session_path %></a>
-                  </li>
-                  <li>
-                      <a class="page-scroll" ><%= link_to 'Register now', new_user_registration_path %></a>
-                  </li>
-                    <% end %>
               </ul>
           </div>
           <!-- /.navbar-collapse -->

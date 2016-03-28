@@ -1,13 +1,13 @@
 <table summary= "Game form for" >
 	<tr>
-		<th><%= f.label(:player1_id, "Team1") %> </th>
+		<th><%= f.label(:player1_id, "Team 1") %> </th>
 		<td><%= f.select(:player1_id, players_select) %> <br></td>
 	<tr>
 		<th></th>
 		<td><%= f.select(:player2_id, players_select) %> <br></td>
 	</tr>
 	<tr>
-		<th><%= f.label(:player3_id, "Team2") %> </th>
+		<th><%= f.label(:player3_id, "Team 2") %> </th>
 		<td><%= f.select(:player3_id, players_select) %> <br></td>
 	</tr>
 	<tr>
@@ -15,11 +15,11 @@
 		<td><%= f.select(:player4_id, players_select) %> <br></td>
 	</tr>
 	<tr>
-		<th><%= f.label(:team1_score, "Score Team1") %> </th>
-		<td><%= f.number_field :team1_score, placeholder: 'SCORE (Team 1)' %> <br></td>
+		<th><%= f.label(:team1_score, "Score 1") %> </th>
+		<td><%= f.number_field :team1_score, placeholder: 'add score for team 1' %> <br></td>
 	</tr>
 	<tr>
-		<th><%= f.label(:team2_score, "Score Team 2") %> </th>
-		<td><%= f.number_field :team2_score, placeholder: 'SCORE (Team 2)' %> <br></td>
+		<th><%= f.label(:team2_score, "Score 2") %> </th>
+		<td><%= f.number_field :team2_score, placeholder: 'add score for team 2' %> <br></td>
 	</tr>
 </table>

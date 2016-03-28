@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
   def create
   	@player=Player.new(player_params)
   	if @player.save
-  		flash[:notice] = "Player created successfully."
+  		flash[:notice] = "Player '#{@player.first_name} #{@player.last_name}' was created successfully."
   		redirect_to players_path
   	else
   		render 'players/new'
@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
 
   def destroy
     player=Player.find(params[:id]).destroy
-    redirect_to teams_path, notice: "Player #{player.first_name} was deleted."
+    redirect_to players_path, notice: "Player #{player.first_name} was deleted."
   end
 
 private

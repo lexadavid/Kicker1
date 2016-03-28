@@ -19,7 +19,7 @@
 
 
 
-body { padding-top: 150px;
+body { padding-top: 100px;
 }
 
 header {
@@ -34,6 +34,11 @@ font-size: 20px;
 
 .page-scroll {
   color: green;
+
+}
+
+.alert-success {
+text-align: center;
 
 }
 

@@ -38,22 +38,22 @@
                   </li>
               </ul>
           </div>
-          <!-- /.navbar-collapse -->
       </div>
-      <!-- /.container-fluid -->
   </nav>
 
+<!-- Body part -->
   <body>
-    <div class="notice">
-      <% if !flash[:notice].blank? %>
+    <!-- Flash message -->
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= flash[:notice] %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
-<!-- Content -->
+    <!-- Content -->
     <div class="container">
       <%= yield %>
     </div>
-
   </body>
 </html>

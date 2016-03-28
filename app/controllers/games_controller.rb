@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  
+
   def index
   	@games = Game.all
   end
@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      flash[:notice] = "Game created successfully."
+      flash[:notice] = "Game was successfully created."
       redirect_to games_path
     else
       render 'game/new'
@@ -29,7 +29,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     if @game.update_attributes(game_params)
-      flash[:notice] = "Game #{@game.id} updated successfully."
+      flash[:notice] = "Game #{@game.id} was successfully updated."
       redirect_to game_path
     else
       render 'edit'
@@ -42,12 +42,12 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find(params[:id]).destroy
-    flash[:notice] = "Game #{game.id} deleted successfully."
+    flash[:notice] = "Game #{game.id} was successfully deleted."
     redirect_to games_path
   end
 
   def game_params
     params.require(:game).permit(:player1_id, :player2_id, :player3_id, :player4_id, :team1_score, :team2_score)
-  end 
+  end
 
 end

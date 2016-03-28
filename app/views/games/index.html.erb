@@ -27,7 +27,7 @@
         <td><%= game.updated_at.strftime("%d/%m/%Y") %></td>
         <td><%= link_to "Detail", game_path(game), class: 'action show' %></td>
         <td><%= link_to "Edit", edit_game_path(game), class: 'action edit' %></td>
-        <td><%= link_to "Delete", game_path(game), method: :delete, class: 'action delete' %> <br></td>
+        <td><%= link_to "Delete", game_path(game), data: {:confirm => 'Are you sure?'}, method: :delete %> <br></td>
       </tr>
 	  <%end%>
   </tbody>

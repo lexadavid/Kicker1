@@ -28,6 +28,7 @@ class PlayersController < ApplicationController
   def update
   	@player=Player.find(params[:id])
   	if @player.update_attributes(player_params)
+      flash[:notice] = "Player: '#{@player.first_name} #{@player.last_name}' was updated successfully."
   		redirect_to player_path
   	else
   		render edit_player_path
@@ -40,7 +41,7 @@ class PlayersController < ApplicationController
 
   def destroy
     player=Player.find(params[:id]).destroy
-    redirect_to players_path, notice: "Player #{player.first_name} was deleted."
+    redirect_to players_path, notice: "Player '#{player.first_name} #{player.last_name}' was deleted."
   end
 
 private

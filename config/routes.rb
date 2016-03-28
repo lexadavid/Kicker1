@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'pages#welcome'
   get 'pages/rules' => 'pages#rules'
   get 'pages/best' => 'pages#best_performers'
-  resources :teams
   resources :games
   resources :players
+  resources :feedbacks, only: [:index, :new, :create]
   devise_for :users
 
 

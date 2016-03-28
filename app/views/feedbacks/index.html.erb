@@ -1,0 +1,23 @@
+<h1>Feedback List</h1>
+<br><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Feedback</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feedbacks.each do |feedback| %>
+      <tr>
+        <td><%= feedback.feedback_type %></td>
+        <td><%= feedback.text %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
+<%= link_to 'Add new feedback', new_feedback_path %>

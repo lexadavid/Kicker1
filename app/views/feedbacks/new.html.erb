@@ -1,0 +1,14 @@
+<h1>New Feedback</h1>
+<br>
+<br>
+
+<%= form_for(@feedback) do |f| %>
+
+  <th><%= f.label(:feedback_type, "Type of feedback") %> </th>
+  <td><%= f.text_field :feedback_type %> <br></td>
+
+  <th><%= f.label(:text, "Feedback") %> </th>
+  <td><%= f.text_area :text %> <br></td>
+
+  <%= f.submit "Create" %> <br>
+<% end %>

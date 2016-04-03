@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.feature "adding feedback"  do
+feature "adding feedback"  do
 
   scenario "allow a user to add a new feedback" do
 

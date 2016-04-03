@@ -1,5 +1,10 @@
 class Player < ActiveRecord::Base
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+
+
   def games
     Game.where('player1_id = :player_id or player2_id = :player_id
       or player3_id = :player_id or player4_id = :player_id',

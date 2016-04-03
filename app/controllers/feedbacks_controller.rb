@@ -17,6 +17,7 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  private
   def feedback_params
     params.require(:feedback).permit(:feedback_type, :text)
   end

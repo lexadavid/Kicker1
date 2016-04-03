@@ -18,7 +18,7 @@ class GamesController < ApplicationController
       flash[:notice] = "Game was successfully created."
       redirect_to games_path
     else
-      render 'game/new'
+      render 'games/new'
     end
   end
 

@@ -1,9 +1,12 @@
 class Player < ActiveRecord::Base
 
+  scope :search, ->(keyword){ where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
 
+  before_save :set_keywords
 
   def games
     Game.where('player1_id = :player_id or player2_id = :player_id
@@ -20,4 +23,17 @@ class Player < ActiveRecord::Base
   def win_ratio
     games.count.to_f.zero? ? 0.0 : ((wins.count / (games.count.to_f)).round(1) * 100)
   end
+
+  def best_performer?
+    if @player.id = @players.sort_by{|player| player.win_ratio}.reverse.first.id
+      true
+    else
+      false
+    end
+  end
+
+  protected
+    def set_keywords
+      self.keywords = [first_name, last_name, email, country, position].map {|f| f.downcase}.join(' ')
+    end
 end

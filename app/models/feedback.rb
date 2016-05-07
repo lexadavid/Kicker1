@@ -1,3 +1,3 @@
 class Feedback < ActiveRecord::Base
-  validatess :text, presence: true
+  validates :text, presence: true
 end

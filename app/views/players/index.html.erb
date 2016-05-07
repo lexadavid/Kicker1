@@ -14,9 +14,8 @@
     <tr>
       <th>#</th>
       <th>Name</th>
-      <th>Surname</th>
+      <th>Email</th>
       <th>Position</th>
-      <th>Detail</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -26,10 +25,9 @@
     <% @players.sort_by {|x| x.id }.each do |player| %>
       <tr>
         <td><%= player.id %> </td>
-        <td><%= player.first_name %></td>
-        <td><%= player.last_name %></td>
+        <td><%= link_to player.first_name + " " + player.last_name, player_path(player) %></td>
+        <td><%= player.email %></td>
         <td><%= player.position %></td>
-        <td><%= link_to("Detail", player_path(player.id), class: "action show") %></td>
         <td><%= link_to("Edit", edit_player_path(player.id), class: "action edit") %></td>
         <td><%= link_to("Delete", player_path(player.id), data: {:confirm => 'Are you sure?'}, method: :delete, class: "action delete") %></td>
       </tr>

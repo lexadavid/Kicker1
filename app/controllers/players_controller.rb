@@ -1,10 +1,11 @@
 class PlayersController < ApplicationController
+  before_action :get_player, only: [:show, :edit, :update, :delete]
+
   def index
   	@players=Player.search(params[:keyword])
   end
 
   def show
-  	@player=Player.find(params[:id])
   end
 
   def new
@@ -22,11 +23,9 @@ class PlayersController < ApplicationController
   end
 
   def edit
-  	@player=Player.find(params[:id])
   end
 
   def update
-  	@player=Player.find(params[:id])
   	if @player.update_attributes(player_params)
       flash[:notice] = "Player: '#{@player.first_name} #{@player.last_name}' was updated successfully."
   		redirect_to player_path
@@ -36,12 +35,15 @@ class PlayersController < ApplicationController
   end
 
   def delete
-    @player=Player.find(params[:id])
   end
 
   def destroy
     player=Player.find(params[:id]).destroy
     redirect_to players_path, notice: "Player '#{player.first_name} #{player.last_name}' was deleted."
+  end
+
+  def get_player
+    @player= Player.find(params[:id])
   end
 
 private

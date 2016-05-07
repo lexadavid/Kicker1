@@ -1,11 +1,15 @@
 class GamesController < ApplicationController
+  before_action :get_game, only: [:show, :edit, :update, :delete]
 
   def index
   	@games = Game.all
   end
 
   def show
-    @game = Game.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {render json: @game}
+    end
   end
 
   def new
@@ -23,11 +27,9 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
   end
 
   def update
-    @game = Game.find(params[:id])
     if @game.update_attributes(game_params)
       flash[:notice] = "Game #{@game.id} was successfully updated."
       redirect_to game_path
@@ -37,7 +39,6 @@ class GamesController < ApplicationController
   end
 
   def delete
-    @game = Game.find(params[:id])
   end
 
   def destroy
@@ -48,6 +49,10 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:player1_id, :player2_id, :player3_id, :player4_id, :team1_score, :team2_score)
+  end
+
+   def get_game
+    @game = Game.find(params[:id])
   end
 
 end

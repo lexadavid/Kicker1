@@ -25,15 +25,14 @@ class Player < ActiveRecord::Base
   end
 
   def best_performer?
-    if @player.id = @players.sort_by{|player| player.win_ratio}.reverse.first.id
-      true
-    else
-      false
-    end
+    return @player.id == @players.sort_by{|player| player.win_ratio}.reverse.first.id
   end
 
-  protected
-    def set_keywords
-      self.keywords = [first_name, last_name, email, country, position].map {|f| f.downcase}.join(' ')
-    end
+  def country?
+    country.present?
+  end
+
+  def set_keywords
+    self.keywords = [first_name, last_name, email, country, position].map {|f| f.downcase}.join(' ')
+  end
 end

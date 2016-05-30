@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
   get 'pages/rules' => 'pages#rules'
   get 'pages/best' => 'pages#best_performers'
+  get 'pages/graph' => 'pages#graph'
   resources :games
   resources :players
   resources :feedbacks, only: [:index, :new, :create]

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'pages/rules' => 'pages#rules'
   get 'pages/best' => 'pages#best_performers'
   get 'pages/graph' => 'pages#graph'
+  get 'pages/react' => 'pages#react'
   resources :games
   resources :players
   resources :feedbacks, only: [:index, :new, :create]

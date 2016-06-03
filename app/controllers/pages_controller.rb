@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   def graph
   end
 
+  def react
+  end
+
   def best_performers
     @players = Player.all
   end

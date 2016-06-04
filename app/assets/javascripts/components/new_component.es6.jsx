@@ -1,0 +1,1 @@
+class NewComponent extends React.Component
